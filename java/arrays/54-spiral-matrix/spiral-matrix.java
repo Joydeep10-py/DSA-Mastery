@@ -1,15 +1,33 @@
 class Solution {
-    public int reverse(int x) {
-        int num = 0;
-        if (num>Integer.MAX_VALUE/10 || num<Integer.MIN_VALUE/10){
-            return 0;
-        }
-        while (x!=0){
-            int r = x % 10;
-            x = x / 10;
-            num = (num * 10) + r;
-        }
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> list = new ArrayList<>();
+        int top = 0;
+        int bottom = matrix.length - 1;
+        int left = 0;
+        int right = matrix[0].length - 1;
 
-        return num;
+        while (top <= bottom && left <= right){
+            for (int i = left; i <= right; i++) {
+                list.add(matrix[top][i]);
+            }
+            top++;
+            for (int i = top; i <= bottom; i++) {
+                list.add(matrix[i][right]);
+            }
+            right--;
+            if (top <= bottom){
+                for (int i = right; i >= left; i--) {
+                    list.add(matrix[bottom][i]);
+                }
+            }
+            bottom--;
+            if (left <= right){
+                for (int i = bottom; i >= top; i--) {
+                    list.add(matrix[i][left]);
+                }
+            }
+            left++;
+        }
+        return list;
     }
 }
