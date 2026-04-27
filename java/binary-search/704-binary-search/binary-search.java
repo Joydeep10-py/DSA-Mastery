@@ -1,15 +1,18 @@
 class Solution {
-    public int reverse(int x) {
-        int num = 0;
-        if (num>Integer.MAX_VALUE/10 || num<Integer.MIN_VALUE/10){
-            return 0;
-        }
-        while (x!=0){
-            int r = x % 10;
-            x = x / 10;
-            num = (num * 10) + r;
-        }
+    public int search(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length - 1;
 
-        return num;
+        while (start <= end){
+            int mid = start + (end - start) / 2;
+            if(target < nums[mid]){
+                end = mid - 1;
+            } else if (target > nums[mid]) {
+                start = mid + 1;
+            } else  {
+                return mid;
+            }
+        }
+        return -1;
     }
 }
