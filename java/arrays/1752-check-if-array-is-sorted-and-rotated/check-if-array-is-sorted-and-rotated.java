@@ -1,15 +1,18 @@
 class Solution {
-    public int reverse(int x) {
-        int num = 0;
-        if (num>Integer.MAX_VALUE/10 || num<Integer.MIN_VALUE/10){
-            return 0;
-        }
-        while (x!=0){
-            int r = x % 10;
-            x = x / 10;
-            num = (num * 10) + r;
-        }
+    public boolean check(int[] nums) {
+        int n = nums.length;
+        int c = 0;
 
-        return num;
+        for (int i = 1; i < n; i++) {
+            if (nums[i-1]>nums[i]){
+                c = c + 1;
+            }
+        }
+        
+        if (nums[n-1] > nums[0]){
+            c = c + 1;
+        }
+        return c <= 1;
     }
+
 }
