@@ -1,4 +1,4 @@
-# 🧩 54. Spiral Matrix
+# 🧩 560. Subarray Sum Equals K
 
 > **Platform:** LeetCode
 
@@ -6,20 +6,20 @@
 
 ## 📋 Problem Statement
 
-> Given an m x n matrix, return all elements of the matrix in spiral order.
->
-> _Example: `Input`: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-`Output`: [1,2,3,6,9,8,7,4,5]
+> Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
+A subarray is a contiguous non-empty sequence of elements within an array.
+> 
+> _Example: `Input`: nums = [1,1,1], `k` = 2
+`Output`: 2
 
 ---
 
 ## 📌 Constraints
 
 ```
-• m == matrix.length
-• n == matrix[i].length
-• 1 <= m, n <= 10
-• -100 <= matrix[i][j] <= 100
+• 1 <= nums.length <= 2 * 10⁴
+• -1000 <= nums[i] <= 1000
+• -10⁷ <= k <= 10⁷
 ```
 
 ---
@@ -29,9 +29,9 @@
 | Property         | Details                                      |
 |------------------|----------------------------------------------|
 | **Difficulty**   | 🟡 Medium                                    |
-| **Topic Tags**   | `Array`, `Matrix`, `Simulation`                                       |                                      |
-| **Solved On**    | April 26, 2026                                   |
-| **Attempts**     | 2                                           |
+| **Topic Tags**   | `Array`, `Senior Staff`, `Hash Table`, `Prefix Sum`                                       |                                      |
+| **Solved On**    | April 28, 2026                                   |
+| **Attempts**     | 4                                           |
 
 ---
 
@@ -39,14 +39,14 @@
 
 ### Example 1
 ```
-Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-Output: [1,2,3,6,9,8,7,4,5]
+Input: nums = [1,1,1], k = 2
+Output: 2
 ```
 
 ### Example 2
 ```
-Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+Input: nums = [1,2,3], k = 3
+Output: 2
 ```
 ---
 ## 💻 Solution Code
@@ -54,36 +54,26 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 ### Java
 ```java
 class Solution {
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> list = new ArrayList<>();
-        int top = 0;
-        int bottom = matrix.length - 1;
-        int left = 0;
-        int right = matrix[0].length - 1;
+    public int subarraySum(int[] nums, int k) {
+        int c = 0;
+        HashMap<Integer, Integer> hash = new HashMap<>();
+        hash.put(0,1);
+        int prefixSum = 0;
 
-        while (top <= bottom && left <= right){
-            for (int i = left; i <= right; i++) {
-                list.add(matrix[top][i]);
+        for (int i = 0; i < nums.length; i++) {
+            prefixSum += nums[i];
+
+            if (hash.containsKey(prefixSum - k)){
+                c += hash.get(prefixSum - k);
             }
-            top++;
-            for (int i = top; i <= bottom; i++) {
-                list.add(matrix[i][right]);
+
+            if (hash.containsKey(prefixSum)){
+                hash.put(prefixSum, hash.get(prefixSum) + 1);
+            } else {
+                hash.put(prefixSum, 1);
             }
-            right--;
-            if (top <= bottom){
-                for (int i = right; i >= left; i--) {
-                    list.add(matrix[bottom][i]);
-                }
-            }
-            bottom--;
-            if (left <= right){
-                for (int i = bottom; i >= top; i--) {
-                    list.add(matrix[i][left]);
-                }
-            }
-            left++;
         }
-        return list;
+        return c;
     }
 }
 ```
@@ -93,8 +83,8 @@ class Solution {
 
 | Metric | Optimal |
 |--------|-------------|
-| **Time** | O(n²) |
-| **Space** | O(1) |
+| **Time** | O(n) |
+| **Space** | O(n) |
 
 ---
 
@@ -102,19 +92,19 @@ class Solution {
 
 > patterns or tricks to remember.
 
-- Top left bottom concept. Prefer notes
+- Use the Prefix-Sum concept. Add the count values in hash table
 
 ---
 
 ## 🔖 References
 
-- 🔗 [Problem Link](https://leetcode.com/problems/spiral-matrix/)
-- 🎥 [Video Explanation](https://www.youtube.com/watch?v=3Zv-s9UUrFM&feature=youtu.be)
+- 🔗 [Problem Link](https://leetcode.com/problems/subarray-sum-equals-k/)
+- 🎥 [Video Explanation](https://www.youtube.com/watch?v=xvNwoz-ufXA&list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz&index=33)
 
 ---
 
 <div align="center">
 
-**Difficulty** — 🟡 Medium &nbsp;·&nbsp; **Topic** — Array, Matrix, Simulation &nbsp;·&nbsp; **Status** — ✅ Solved
+**Difficulty** — 🟡 Medium &nbsp;·&nbsp; **Topic** — Array, Senior Staff, Hash Table, Prefix Sum &nbsp;·&nbsp; **Status** — ✅ Solved
 
 </div>
