@@ -1,4 +1,4 @@
-# 🧩 54. Spiral Matrix
+# 🧩 1752. Check if Array is Sorted and Rotated
 
 > **Platform:** LeetCode
 
@@ -6,20 +6,20 @@
 
 ## 📋 Problem Statement
 
-> Given an m x n matrix, return all elements of the matrix in spiral order.
+> Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.
+> There may be duplicates in the original array.
+> Note: An array A rotated by x positions results in an array B of the same length such that B[i] == A[(i+x) % A.length] for every valid index i.
 >
-> _Example: `Input`: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-`Output`: [1,2,3,6,9,8,7,4,5]
+> _Example: `Input`: nums = [3,4,5,1,2]
+`Output`: true
 
 ---
 
 ## 📌 Constraints
 
 ```
-• m == matrix.length
-• n == matrix[i].length
-• 1 <= m, n <= 10
-• -100 <= matrix[i][j] <= 100
+• 1 <= nums.length <= 100
+• 1 <= nums[i] <= 100
 ```
 
 ---
@@ -28,10 +28,10 @@
 
 | Property         | Details                                      |
 |------------------|----------------------------------------------|
-| **Difficulty**   | 🟡 Medium                                    |
-| **Topic Tags**   | `Array`, `Matrix`, `Simulation`                                       |                                      |
-| **Solved On**    | April 26, 2026                                   |
-| **Attempts**     | 2                                           |
+| **Difficulty**   | 🟢 Easy                                   |
+| **Topic Tags**   | `Array`, `Mid Level`                                       |                                      |
+| **Solved On**    | April 5, 2026                                   |
+| **Attempts**     | 1                                           |
 
 ---
 
@@ -39,14 +39,25 @@
 
 ### Example 1
 ```
-Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-Output: [1,2,3,6,9,8,7,4,5]
+Input: nums = [3,4,5,1,2]
+Output: true
+Explanation: [1,2,3,4,5] is the original sorted array.
+You can rotate the array by x = 2 positions to begin on the element of value 3: [3,4,5,1,2].
 ```
 
 ### Example 2
 ```
-Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+Input: nums = [2,1,3,4]
+Output: false
+Explanation: There is no sorted array once rotated that can make nums.
+```
+
+### Example 3
+```
+Input: nums = [1,2,3]
+Output: true
+Explanation: [1,2,3] is the original sorted array.
+You can rotate the array by x = 0 positions (i.e. no rotation) to make nums.
 ```
 ---
 ## 💻 Solution Code
@@ -54,37 +65,22 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 ### Java
 ```java
 class Solution {
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> list = new ArrayList<>();
-        int top = 0;
-        int bottom = matrix.length - 1;
-        int left = 0;
-        int right = matrix[0].length - 1;
+    public boolean check(int[] nums) {
+        int n = nums.length;
+        int c = 0;
 
-        while (top <= bottom && left <= right){
-            for (int i = left; i <= right; i++) {
-                list.add(matrix[top][i]);
+        for (int i = 1; i < n; i++) {
+            if (nums[i-1]>nums[i]){
+                c = c + 1;
             }
-            top++;
-            for (int i = top; i <= bottom; i++) {
-                list.add(matrix[i][right]);
-            }
-            right--;
-            if (top <= bottom){
-                for (int i = right; i >= left; i--) {
-                    list.add(matrix[bottom][i]);
-                }
-            }
-            bottom--;
-            if (left <= right){
-                for (int i = bottom; i >= top; i--) {
-                    list.add(matrix[i][left]);
-                }
-            }
-            left++;
         }
-        return list;
+        
+        if (nums[n-1] > nums[0]){
+            c = c + 1;
+        }
+        return c <= 1;
     }
+
 }
 ```
 ---
@@ -93,8 +89,8 @@ class Solution {
 
 | Metric | Optimal |
 |--------|-------------|
-| **Time** | O(n²) |
-| **Space** | O(1) |
+| **Time** | O(n) |
+| **Space** | O(n) |
 
 ---
 
@@ -102,19 +98,18 @@ class Solution {
 
 > patterns or tricks to remember.
 
-- Top left bottom concept. Prefer notes
+- No outter pattern
 
 ---
 
 ## 🔖 References
 
-- 🔗 [Problem Link](https://leetcode.com/problems/spiral-matrix/)
-- 🎥 [Video Explanation](https://www.youtube.com/watch?v=3Zv-s9UUrFM&feature=youtu.be)
+- 🔗 [Problem Link](https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/)
 
 ---
 
 <div align="center">
 
-**Difficulty** — 🟡 Medium &nbsp;·&nbsp; **Topic** — Array, Matrix, Simulation &nbsp;·&nbsp; **Status** — ✅ Solved
+**Difficulty** — 🟢 Easy  &nbsp;·&nbsp; **Topic** — Array, Mid Level &nbsp;·&nbsp; **Status** — ✅ Solved
 
 </div>
