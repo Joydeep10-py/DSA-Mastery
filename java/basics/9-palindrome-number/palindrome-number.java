@@ -1,15 +1,16 @@
 class Solution {
-    public int reverse(int x) {
-        int num = 0;
-        if (num>Integer.MAX_VALUE/10 || num<Integer.MIN_VALUE/10){
-            return 0;
+    public boolean isPalindrome(int x){
+        if (x<0) return false;
+        int rev =  reverse(x,0);
+        return rev == x;
+    }
+    private int reverse(int n, int rev){
+        if (n==0){
+            return rev;
         }
-        while (x!=0){
-            int r = x % 10;
-            x = x / 10;
-            num = (num * 10) + r;
-        }
-
-        return num;
+        int r = n % 10;
+        n = n / 10;
+        rev = (rev*10) + r;
+        return reverse(n, rev);
     }
 }
