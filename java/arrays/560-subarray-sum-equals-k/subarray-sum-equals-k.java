@@ -1,15 +1,23 @@
 class Solution {
-    public int reverse(int x) {
-        int num = 0;
-        if (num>Integer.MAX_VALUE/10 || num<Integer.MIN_VALUE/10){
-            return 0;
-        }
-        while (x!=0){
-            int r = x % 10;
-            x = x / 10;
-            num = (num * 10) + r;
-        }
+    public int subarraySum(int[] nums, int k) {
+        int c = 0;
+        HashMap<Integer, Integer> hash = new HashMap<>();
+        hash.put(0,1);
+        int prefixSum = 0;
 
-        return num;
+        for (int i = 0; i < nums.length; i++) {
+            prefixSum += nums[i];
+
+            if (hash.containsKey(prefixSum - k)){
+                c += hash.get(prefixSum - k);
+            }
+
+            if (hash.containsKey(prefixSum)){
+                hash.put(prefixSum, hash.get(prefixSum) + 1);
+            } else {
+                hash.put(prefixSum, 1);
+            }
+        }
+        return c;
     }
 }
