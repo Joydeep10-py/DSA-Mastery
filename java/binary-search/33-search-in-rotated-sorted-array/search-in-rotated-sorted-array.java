@@ -1,15 +1,32 @@
 class Solution {
-    public int reverse(int x) {
-        int num = 0;
-        if (num>Integer.MAX_VALUE/10 || num<Integer.MIN_VALUE/10){
-            return 0;
+    public int search(int[] nums, int target) {
+        int j = 0;
+        int n = 0;
+        for (int i = j+1; i < nums.length; i++) {
+            if (nums[j] > nums[i]){
+                n = i;
+                break;
+            }
+            j++;
         }
-        while (x!=0){
-            int r = x % 10;
-            x = x / 10;
-            num = (num * 10) + r;
+        if (BinarySearchRotated(nums,target,0,n-1) == -1){
+            return BinarySearchRotated(nums, target, n, nums.length - 1);
+        } else {
+            return BinarySearchRotated(nums,target,0,n-1);
         }
+    }
 
-        return num;
+    private static int BinarySearchRotated(int[] nums, int target, int low, int high){
+        while (low <= high){
+            int mid = low + (high -low)/2;
+            if (nums[mid] == target){
+                return mid;
+            } else if (nums[mid] > target) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return -1;
     }
 }
