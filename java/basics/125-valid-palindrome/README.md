@@ -1,4 +1,4 @@
-# 🧩 54. Spiral Matrix
+# 🧩 125. Valid Palindrome
 
 > **Platform:** LeetCode
 
@@ -6,20 +6,20 @@
 
 ## 📋 Problem Statement
 
-> Given an m x n matrix, return all elements of the matrix in spiral order.
+> A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+Given a string s, return true if it is a palindrome, or false otherwise.
 >
-> _Example: `Input`: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-`Output`: [1,2,3,6,9,8,7,4,5]
+> _Example: `Input`: s = "A man, a plan, a canal: Panama"
+`Output`: true
 
 ---
 
 ## 📌 Constraints
 
 ```
-• m == matrix.length
-• n == matrix[i].length
-• 1 <= m, n <= 10
-• -100 <= matrix[i][j] <= 100
+• 1 <= s.length <= 2 * 10⁵
+• s consists only of printable ASCII characters.
 ```
 
 ---
@@ -28,10 +28,10 @@
 
 | Property         | Details                                      |
 |------------------|----------------------------------------------|
-| **Difficulty**   | 🟡 Medium                                    |
-| **Topic Tags**   | `Array`, `Matrix`, `Simulation`                                       |                                      |
-| **Solved On**    | April 26, 2026                                   |
-| **Attempts**     | 2                                           |
+| **Difficulty**   | 🟢 Easy                                    |
+| **Topic Tags**   | `String`, `Two Pointer`                                      |                                      |
+| **Solved On**    | March 10, 2026                                   |
+| **Attempts**     | 1                                           |
 
 ---
 
@@ -39,51 +39,62 @@
 
 ### Example 1
 ```
-Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-Output: [1,2,3,6,9,8,7,4,5]
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome.
 ```
 
 ### Example 2
 ```
-Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+Input: s = "race a car"
+Output: false
+Explanation: "raceacar" is not a palindrome.
 ```
+
+### Example 2
+```
+Input: s = " "
+Output: true
+Explanation: s is an empty string "" after removing non-alphanumeric characters.
+Since an empty string reads the same forward and backward, it is a palindrome.
+```
+
 ---
 ## 💻 Solution Code
 
 ### Java
 ```java
 class Solution {
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> list = new ArrayList<>();
-        int top = 0;
-        int bottom = matrix.length - 1;
-        int left = 0;
-        int right = matrix[0].length - 1;
+    public boolean isPalindrome(String s) {
+        s = s.trim();
+        s = s.toLowerCase();
+        String newStr = palindromeStr(s,"",1);
+        newStr = newStr.trim();
+        newStr = newStr.toLowerCase();
+        return newStr.equals(cleanStr(s,"",0));
+    }
 
-        while (top <= bottom && left <= right){
-            for (int i = left; i <= right; i++) {
-                list.add(matrix[top][i]);
-            }
-            top++;
-            for (int i = top; i <= bottom; i++) {
-                list.add(matrix[i][right]);
-            }
-            right--;
-            if (top <= bottom){
-                for (int i = right; i >= left; i--) {
-                    list.add(matrix[bottom][i]);
-                }
-            }
-            bottom--;
-            if (left <= right){
-                for (int i = bottom; i >= top; i--) {
-                    list.add(matrix[i][left]);
-                }
-            }
-            left++;
+    private String cleanStr(String s, String str, int c){
+
+        if (c == s.length()){
+            return str;
         }
-        return list;
+        if (Character.isLetterOrDigit(s.charAt(c))){
+            str = str + s.charAt(c);
+        }
+        c = c + 1;
+        return cleanStr(s,str,c);
+    }
+
+    private String palindromeStr(String s, String str, int c){
+        if (c > s.length()){
+            return str;
+        }
+        if (Character.isLetterOrDigit(s.charAt(s.length()-c))){
+            str = str + s.charAt(s.length()-c);
+        }
+        c = c + 1;
+        return palindromeStr(s, str, c);
     }
 }
 ```
@@ -93,8 +104,8 @@ class Solution {
 
 | Metric | Optimal |
 |--------|-------------|
-| **Time** | O(n²) |
-| **Space** | O(1) |
+| **Time** | O(log n) |
+| **Space** | O(n) |
 
 ---
 
@@ -102,19 +113,18 @@ class Solution {
 
 > patterns or tricks to remember.
 
-- Top left bottom concept. Prefer notes
+- Use Recurssion
 
 ---
 
 ## 🔖 References
 
-- 🔗 [Problem Link](https://leetcode.com/problems/spiral-matrix/)
-- 🎥 [Video Explanation](https://www.youtube.com/watch?v=3Zv-s9UUrFM&feature=youtu.be)
+- 🔗 [Problem Link](https://leetcode.com/problems/valid-palindrome/description/)
 
 ---
 
 <div align="center">
 
-**Difficulty** — 🟡 Medium &nbsp;·&nbsp; **Topic** — Array, Matrix, Simulation &nbsp;·&nbsp; **Status** — ✅ Solved
+**Difficulty** — 🟢 Easy &nbsp;·&nbsp; **Topic** — String, Two Pointer &nbsp;·&nbsp; **Status** — ✅ Solved
 
 </div>
