@@ -44,12 +44,12 @@ This repository is my **personal, structured DSA practice log**. Every problem h
 
 ## 📊 Progress Tracker
 
-| Difficulty | Solved | Target | Progress |
-|------------|--------|--------|----------|
-| 🟢 Easy    | 21      | 150    | `░░░░░░░░░░` 14% |
-| 🟡 Medium  | 12      | 150    | `░░░░░░░░░░` 8% |
-| 🔴 Hard    | 0      | 50     | `░░░░░░░░░░` 0% |
-| **Total**  | **0**  | **350**| `░░░░░░░░░░` 9% |
+| Difficulty | Solved | Target | 
+|------------|--------|--------||
+| 🟢 Easy    | 23      | 150    |
+| 🟡 Medium  | 11      | 150    | 
+| 🔴 Hard    | 0      | 50     |
+| **Total**  | **34**  | **350**|
 
 ---
 
@@ -96,9 +96,9 @@ DSA-Mastery/
 
 | # | Problem | Difficulty | Approach | Status |
 |---|---------|------------|----------|--------|
-| 1752 | [Check if Array is Sorted or Rotated](./arrays//1752_check-if-array-sorted-or-rotated/README.md) | 🟢 Easy | Sorting | ✅ |
-| 054 | [Spiral Matrix](./arrays/54-spiral-matrix/README.md) | 🟡 Medium | Top Left Right Bottom | ✅ |
-| 560 | [Subarray Sum Equals K](./arrays/560-subarray-sum-equals-k/README.md) | 🟡 Medium | Prefix × Suffix | ✅ |
+| 1752 | [Check if Array is Sorted or Rotated] | 🟢 Easy | Sorting | ✅ |
+| 054 | [Spiral Matrix] | 🟡 Medium | Top Left Right Bottom | ✅ |
+| 560 | [Subarray Sum Equals K] | 🟡 Medium | Prefix × Suffix | ✅ |
 
 ---
 
@@ -106,8 +106,10 @@ DSA-Mastery/
 
 | # | Problem | Difficulty | Approach | Status |
 |---|---------|------------|----------|--------|
-| 007 | [Reverse Integer](./basics/7-reverse-integer/README.md) | 🟡 Medium | Maths | ✅ |
-| 009 | [Palindrome Number](./basics/9-palindrome-number/README.md) | 🟢 Easy | Recurssion | ✅ |
+| 007 | [Reverse Integer] | 🟡 Medium | Maths | ✅ |
+| 009 | [Palindrome Number] | 🟢 Easy | Recurssion | ✅ |
+| 125 | [Valid Palindrome] | 🟢 Easy | Recurssion | ✅ |
+| 509 | [Fibonacci Number] | 🟢 Easy | Recurssion | ✅ |
 
 ---
 
@@ -115,9 +117,10 @@ DSA-Mastery/
 
 | # | Problem | Difficulty | Approach | Status |
 |---|---------|------------|----------|--------|
-| 704 | [Binary Search](./binary-search/704-binary-search/README.md) | 🟢 Easy | Binary Search | ✅ |
-| 034 | [Find First and Last Postion of Element in Sorted Array](./binary-search/34-find-first-and-last-position-of-element-in-sorted-array/README.md) | 🟡 Medium | Upper Bound/Lower Bound | ✅ |
-| 035 | [Search Insert Position](./binary-search/35-search-insert-position/README.md) | 🟡 Medium | Binary Search | ✅ |
+| 704 | [Binary Search] | 🟢 Easy | Binary Search | ✅ |
+| 034 | [Find First and Last Postion of Element in Sorted Array] | 🟡 Medium | Upper Bound/Lower Bound | ✅ |
+| 035 | [Search Insert Position] | 🟡 Medium | Binary Search | ✅ |
+| 033 | [Search in Rotated Sorted Array] | 🟡 Medium | Binary Search | ✅ |
 ---
 
 ## 🔑 Core Concepts Cheat Sheet
