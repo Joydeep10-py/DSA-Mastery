@@ -1,4 +1,4 @@
-# 🧩 54. Spiral Matrix
+# 🧩 33. Search in Rotated Sorted Array
 
 > **Platform:** LeetCode
 
@@ -6,20 +6,27 @@
 
 ## 📋 Problem Statement
 
-> Given an m x n matrix, return all elements of the matrix in spiral order.
+> There is an integer array nums sorted in ascending order (with distinct values).
+
+Prior to being passed to your function, nums is possibly left rotated at an unknown index k (1 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,5,6,7] might be left rotated by 3 indices and become [4,5,6,7,0,1,2].
+
+Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
+
+You must write an algorithm with O(log n) runtime complexity.
 >
-> _Example: `Input`: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-`Output`: [1,2,3,6,9,8,7,4,5]
+> _Example: `Input`: nums = [4,5,6,7,0,1,2], `Target`: 0
+`Output`: 4
 
 ---
 
 ## 📌 Constraints
 
 ```
-• m == matrix.length
-• n == matrix[i].length
-• 1 <= m, n <= 10
-• -100 <= matrix[i][j] <= 100
+• 1 <= nums.length <= 5000
+• -10⁴ <= nums[i] <= 10⁴
+• All values of nums are unique.
+• nums is an ascending array that is possibly rotated.
+• -10⁴ <= target <= 10⁴
 ```
 
 ---
@@ -29,9 +36,9 @@
 | Property         | Details                                      |
 |------------------|----------------------------------------------|
 | **Difficulty**   | 🟡 Medium                                    |
-| **Topic Tags**   | `Array`, `Matrix`, `Simulation`                                       |                                      |
-| **Solved On**    | April 26, 2026                                   |
-| **Attempts**     | 2                                           |
+| **Topic Tags**   | `Array`, `Binary Search`                                       |                                      |
+| **Solved On**    | April 29, 2026                                   |
+| **Attempts**     | 1                                           |
 
 ---
 
@@ -39,14 +46,20 @@
 
 ### Example 1
 ```
-Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-Output: [1,2,3,6,9,8,7,4,5]
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
 ```
 
 ### Example 2
 ```
-Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+```
+
+### Example 3
+```
+Input: nums = [1], target = 0
+Output: -1
 ```
 ---
 ## 💻 Solution Code
@@ -54,36 +67,35 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 ### Java
 ```java
 class Solution {
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> list = new ArrayList<>();
-        int top = 0;
-        int bottom = matrix.length - 1;
-        int left = 0;
-        int right = matrix[0].length - 1;
-
-        while (top <= bottom && left <= right){
-            for (int i = left; i <= right; i++) {
-                list.add(matrix[top][i]);
+    public int search(int[] nums, int target) {
+        int j = 0;
+        int n = 0;
+        for (int i = j+1; i < nums.length; i++) {
+            if (nums[j] > nums[i]){
+                n = i;
+                break;
             }
-            top++;
-            for (int i = top; i <= bottom; i++) {
-                list.add(matrix[i][right]);
-            }
-            right--;
-            if (top <= bottom){
-                for (int i = right; i >= left; i--) {
-                    list.add(matrix[bottom][i]);
-                }
-            }
-            bottom--;
-            if (left <= right){
-                for (int i = bottom; i >= top; i--) {
-                    list.add(matrix[i][left]);
-                }
-            }
-            left++;
+            j++;
         }
-        return list;
+        if (BinarySearchRotated(nums,target,0,n-1) == -1){
+            return BinarySearchRotated(nums, target, n, nums.length - 1);
+        } else {
+            return BinarySearchRotated(nums,target,0,n-1);
+        }
+    }
+
+    private static int BinarySearchRotated(int[] nums, int target, int low, int high){
+        while (low <= high){
+            int mid = low + (high -low)/2;
+            if (nums[mid] == target){
+                return mid;
+            } else if (nums[mid] > target) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return -1;
     }
 }
 ```
@@ -93,8 +105,8 @@ class Solution {
 
 | Metric | Optimal |
 |--------|-------------|
-| **Time** | O(n²) |
-| **Space** | O(1) |
+| **Time** | O(log n) |
+| **Space** | O(n) |
 
 ---
 
@@ -102,19 +114,19 @@ class Solution {
 
 > patterns or tricks to remember.
 
-- Top left bottom concept. Prefer notes
+- Find the postion where the array is rotated, then perform Binary Search
 
 ---
 
 ## 🔖 References
 
-- 🔗 [Problem Link](https://leetcode.com/problems/spiral-matrix/)
-- 🎥 [Video Explanation](https://www.youtube.com/watch?v=3Zv-s9UUrFM&feature=youtu.be)
+- 🔗 [Problem Link](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+- 🎥 [Video Explanation](https://www.youtube.com/watch?v=r3pMQ8-Ad5s&list=PLgUwDviBIf0p4ozDR_kJJkONnb1wdx2Ma&index=65)
 
 ---
 
 <div align="center">
 
-**Difficulty** — 🟡 Medium &nbsp;·&nbsp; **Topic** — Array, Matrix, Simulation &nbsp;·&nbsp; **Status** — ✅ Solved
+**Difficulty** — 🟡 Medium &nbsp;·&nbsp; **Topic** — Array, Binary Search &nbsp;·&nbsp; **Status** — ✅ Solved
 
 </div>
