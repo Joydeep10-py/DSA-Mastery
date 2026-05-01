@@ -45,11 +45,11 @@ This repository is my **personal, structured DSA practice log**. Every problem h
 ## 📊 Progress Tracker
 
 | Difficulty | Solved | Target | 
-|------------|--------|--------||
+|------------|--------|--------|
 | 🟢 Easy    | 23      | 150    |
-| 🟡 Medium  | 11      | 150    | 
+| 🟡 Medium  | 12      | 150    | 
 | 🔴 Hard    | 0      | 50     |
-| **Total**  | **34**  | **350**|
+| **Total**  | **35**  | **350**|
 
 ---
 
@@ -99,6 +99,7 @@ DSA-Mastery/
 | 1752 | [Check if Array is Sorted or Rotated] | 🟢 Easy | Sorting | ✅ |
 | 054 | [Spiral Matrix] | 🟡 Medium | Top Left Right Bottom | ✅ |
 | 560 | [Subarray Sum Equals K] | 🟡 Medium | Prefix × Suffix | ✅ |
+| 189 | [Rotate Array] | 🟡 Medium | Two Pointers | ✅ |
 
 ---
 
@@ -121,6 +122,7 @@ DSA-Mastery/
 | 034 | [Find First and Last Postion of Element in Sorted Array] | 🟡 Medium | Upper Bound/Lower Bound | ✅ |
 | 035 | [Search Insert Position] | 🟡 Medium | Binary Search | ✅ |
 | 033 | [Search in Rotated Sorted Array] | 🟡 Medium | Binary Search | ✅ |
+| 081 | [Search in Rotated Sorted Array II] | 🟡 Medium | Binary Search | ✅ |
 ---
 
 ## 🔑 Core Concepts Cheat Sheet
