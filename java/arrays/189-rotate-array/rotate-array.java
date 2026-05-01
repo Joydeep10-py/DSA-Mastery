@@ -1,15 +1,26 @@
 class Solution {
-    public int reverse(int x) {
-        int num = 0;
-        if (num>Integer.MAX_VALUE/10 || num<Integer.MIN_VALUE/10){
-            return 0;
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        k = k % n;
+        if (k == 0){
+            System.out.println(Arrays.toString(nums));
+            return;
         }
-        while (x!=0){
-            int r = x % 10;
-            x = x / 10;
-            num = (num * 10) + r;
-        }
+        reverseArr(nums, 0, n-1);
+        System.out.println(Arrays.toString(nums));
+        reverseArr(nums, 0, k - 1);
+        System.out.println(Arrays.toString(nums));
+        reverseArr(nums,k,n-1);
+        System.out.println(Arrays.toString(nums));
+    }
 
-        return num;
+    private void reverseArr(int[] arr, int s, int n){
+        while (s < n){
+            int temp = arr[s];
+            arr[s] = arr[n];
+            arr[n] = temp;
+            s = s + 1;
+            n = n - 1;
+        }
     }
 }
