@@ -1,4 +1,4 @@
-# 🧩 54. Spiral Matrix
+# 🧩 54. Rotate Array
 
 > **Platform:** LeetCode
 
@@ -6,20 +6,16 @@
 
 ## 📋 Problem Statement
 
-> Given an m x n matrix, return all elements of the matrix in spiral order.
->
-> _Example: `Input`: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-`Output`: [1,2,3,6,9,8,7,4,5]
+> Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
 
 ---
 
 ## 📌 Constraints
 
 ```
-• m == matrix.length
-• n == matrix[i].length
-• 1 <= m, n <= 10
-• -100 <= matrix[i][j] <= 100
+• 1 <= nums.length <= 10⁵
+• -2³¹ <= nums[i] <= 2³¹ - 1
+• 0 <= k <= 10⁵
 ```
 
 ---
@@ -29,9 +25,9 @@
 | Property         | Details                                      |
 |------------------|----------------------------------------------|
 | **Difficulty**   | 🟡 Medium                                    |
-| **Topic Tags**   | `Array`, `Matrix`, `Simulation`                                       |                                      |
-| **Solved On**    | April 26, 2026                                   |
-| **Attempts**     | 2                                           |
+| **Topic Tags**   | `Array`, `Math`, `Two Pointers`                                       |                                      |
+| **Solved On**    | April 24, 2026                                   |
+| **Attempts**     | 3                                           |
 
 ---
 
@@ -39,14 +35,21 @@
 
 ### Example 1
 ```
-Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-Output: [1,2,3,6,9,8,7,4,5]
+Input: nums = [1,2,3,4,5,6,7], k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
 ```
 
 ### Example 2
 ```
-Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+Input: nums = [-1,-100,3,99], k = 2
+Output: [3,99,-1,-100]
+Explanation: 
+rotate 1 steps to the right: [99,-1,-100,3]
+rotate 2 steps to the right: [3,99,-1,-100]
 ```
 ---
 ## 💻 Solution Code
@@ -54,36 +57,29 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 ### Java
 ```java
 class Solution {
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> list = new ArrayList<>();
-        int top = 0;
-        int bottom = matrix.length - 1;
-        int left = 0;
-        int right = matrix[0].length - 1;
-
-        while (top <= bottom && left <= right){
-            for (int i = left; i <= right; i++) {
-                list.add(matrix[top][i]);
-            }
-            top++;
-            for (int i = top; i <= bottom; i++) {
-                list.add(matrix[i][right]);
-            }
-            right--;
-            if (top <= bottom){
-                for (int i = right; i >= left; i--) {
-                    list.add(matrix[bottom][i]);
-                }
-            }
-            bottom--;
-            if (left <= right){
-                for (int i = bottom; i >= top; i--) {
-                    list.add(matrix[i][left]);
-                }
-            }
-            left++;
+    public void rotate(int[] nums, int k) {
+        int n = nums.length;
+        k = k % n;
+        if (k == 0){
+            System.out.println(Arrays.toString(nums));
+            return;
         }
-        return list;
+        reverseArr(nums, 0, n-1);
+        System.out.println(Arrays.toString(nums));
+        reverseArr(nums, 0, k - 1);
+        System.out.println(Arrays.toString(nums));
+        reverseArr(nums,k,n-1);
+        System.out.println(Arrays.toString(nums));
+    }
+
+    private void reverseArr(int[] arr, int s, int n){
+        while (s < n){
+            int temp = arr[s];
+            arr[s] = arr[n];
+            arr[n] = temp;
+            s = s + 1;
+            n = n - 1;
+        }
     }
 }
 ```
@@ -93,8 +89,8 @@ class Solution {
 
 | Metric | Optimal |
 |--------|-------------|
-| **Time** | O(n²) |
-| **Space** | O(1) |
+| **Time** | O(n) |
+| **Space** | O(n) |
 
 ---
 
@@ -102,19 +98,19 @@ class Solution {
 
 > patterns or tricks to remember.
 
-- Top left bottom concept. Prefer notes
+- Prefer notes
 
 ---
 
 ## 🔖 References
 
-- 🔗 [Problem Link](https://leetcode.com/problems/spiral-matrix/)
-- 🎥 [Video Explanation](https://www.youtube.com/watch?v=3Zv-s9UUrFM&feature=youtu.be)
+- 🔗 [Problem Link](https://leetcode.com/problems/rotate-array/)
+- 🎥 [Video Explanation](https://www.youtube.com/watch?t=61&v=wvcQg43_V8U&feature=youtu.be)
 
 ---
 
 <div align="center">
 
-**Difficulty** — 🟡 Medium &nbsp;·&nbsp; **Topic** — Array, Matrix, Simulation &nbsp;·&nbsp; **Status** — ✅ Solved
+**Difficulty** — 🟡 Medium &nbsp;·&nbsp; **Topic** — Array, Math, Two Pointers &nbsp;·&nbsp; **Status** — ✅ Solved
 
 </div>
