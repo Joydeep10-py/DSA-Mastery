@@ -1,15 +1,14 @@
 class Solution {
-    public int reverse(int x) {
-        int num = 0;
-        if (num>Integer.MAX_VALUE/10 || num<Integer.MIN_VALUE/10){
-            return 0;
+    public int findMin(int[] nums) {
+        int n = 0;
+        int j = 0;
+        for (int i = j+1; i < nums.length; i++) {
+            if (nums[j] > nums[i]){
+                n = i;
+                break;
+            }
+            j++;
         }
-        while (x!=0){
-            int r = x % 10;
-            x = x / 10;
-            num = (num * 10) + r;
-        }
-
-        return num;
+        return nums[n];
     }
 }
