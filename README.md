@@ -47,9 +47,9 @@ This repository is my **personal, structured DSA practice log**. Every problem h
 | Difficulty | Solved | Target | 
 |------------|--------|--------|
 | 🟢 Easy    | 23      | 150    |
-| 🟡 Medium  | 12      | 150    | 
+| 🟡 Medium  | 13      | 150    | 
 | 🔴 Hard    | 0      | 50     |
-| **Total**  | **35**  | **350**|
+| **Total**  | **36**  | **350**|
 
 ---
 
@@ -123,6 +123,7 @@ DSA-Mastery/
 | 035 | [Search Insert Position] | 🟡 Medium | Binary Search | ✅ |
 | 033 | [Search in Rotated Sorted Array] | 🟡 Medium | Binary Search | ✅ |
 | 081 | [Search in Rotated Sorted Array II] | 🟡 Medium | Binary Search | ✅ |
+| 153 | [Find Minimum in Rotated Sorted Array] | 🟡 Medium | Binary Search | ✅ |
 ---
 
 ## 🔑 Core Concepts Cheat Sheet
