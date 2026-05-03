@@ -96,14 +96,14 @@ class Solution {
 
 > patterns or tricks to remember.
 
-- Use the rotated array concept
+- Use the even-odd concept. Prefer notes
 
 ---
 
 ## 🔖 References
 
-- 🔗 [Problem Link](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
-- 🎥 [Video Explanation](https://www.youtube.com/watch?v=w2G2W8l__pc)
+- 🔗 [Problem Link](https://leetcode.com/problems/single-element-in-a-sorted-array/)
+- 🎥 [Video Explanation](https://www.youtube.com/watch?v=AZOmHuHadxQ)
 
 ---
 
