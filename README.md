@@ -47,9 +47,9 @@ This repository is my **personal, structured DSA practice log**. Every problem h
 | Difficulty | Solved | Target | 
 |------------|--------|--------|
 | 🟢 Easy    | 23      | 150    |
-| 🟡 Medium  | 14      | 150    | 
+| 🟡 Medium  | 15      | 150    | 
 | 🔴 Hard    | 0      | 50     |
-| **Total**  | **37**  | **350**|
+| **Total**  | **38**  | **350**|
 
 ---
 
@@ -125,6 +125,7 @@ DSA-Mastery/
 | 081 | [Search in Rotated Sorted Array II] | 🟡 Medium | Binary Search | ✅ |
 | 153 | [Find Minimum in Rotated Sorted Array] | 🟡 Medium | Binary Search | ✅ |
 | 540 | [Single Element in a Sorted Array] | 🟡 Medium | Binary Search | ✅ |
+| 162 | [Find Peak Element] | 🟡 Medium | Binary Search | ✅ |
 ---
 
 ## 🔑 Core Concepts Cheat Sheet
