@@ -1,15 +1,28 @@
 class Solution {
-    public int reverse(int x) {
-        int num = 0;
-        if (num>Integer.MAX_VALUE/10 || num<Integer.MIN_VALUE/10){
+    public int findPeakElement(int[] nums) {
+        int low = 0;
+        int high = nums.length - 1;
+
+        if (nums.length == 1){
             return 0;
         }
-        while (x!=0){
-            int r = x % 10;
-            x = x / 10;
-            num = (num * 10) + r;
+
+        if (nums.length == 2){
+            if (nums[0] > nums[1]){
+                return 0;
+            } else {
+                return 1;
+            }
         }
 
-        return num;
+        while (low < high){
+            int mid = low + (high - low)/2;
+            if (nums[mid] < nums[mid+1]){
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+        return low;
     }
 }
