@@ -147,8 +147,6 @@ DSA-Mastery/
 | BFS / DFS | — | O(V + E) | O(V + E) | O(V) |
 | Dijkstra (Min-Heap) | — | O((V+E) log V) | O((V+E) log V) | O(V) |
 | Dynamic Programming | — | Problem-specific | — | Problem-specific 
-| Dynamic Programming | — | Problem-specific | — | Problem-specific |
-
 
 </details>
 
