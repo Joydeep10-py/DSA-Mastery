@@ -47,9 +47,9 @@ This repository is my **personal, structured DSA practice log**. Every problem h
 | Difficulty | Solved | Target | 
 |------------|--------|--------|
 | 🟢 Easy    | 23      | 150    |
-| 🟡 Medium  | 15      | 150    | 
+| 🟡 Medium  | 16      | 150    | 
 | 🔴 Hard    | 0      | 50     |
-| **Total**  | **38**  | **350**|
+| **Total**  | **39**  | **350**|
 
 ---
 
@@ -100,6 +100,7 @@ DSA-Mastery/
 | 054 | [Spiral Matrix] | 🟡 Medium | Top Left Right Bottom | ✅ |
 | 560 | [Subarray Sum Equals K] | 🟡 Medium | Prefix × Suffix | ✅ |
 | 189 | [Rotate Array] | 🟡 Medium | Two Pointers | ✅ |
+| 118 | [Pascals Traingle] | 🟡 Medium | Dynamic Programming | ✅ |
 
 ---
 
