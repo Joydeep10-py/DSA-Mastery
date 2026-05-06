@@ -1,4 +1,4 @@
-# 🧩 54. Spiral Matrix
+# 🧩 118. Pascals Traingle
 
 > **Platform:** LeetCode
 
@@ -6,20 +6,14 @@
 
 ## 📋 Problem Statement
 
-> Given an m x n matrix, return all elements of the matrix in spiral order.
->
-> _Example: `Input`: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-`Output`: [1,2,3,6,9,8,7,4,5]
+> Given an integer numRows, return the first numRows of Pascal's triangle.
 
 ---
 
 ## 📌 Constraints
 
 ```
-• m == matrix.length
-• n == matrix[i].length
-• 1 <= m, n <= 10
-• -100 <= matrix[i][j] <= 100
+• 1  <= numRows <= 30
 ```
 
 ---
@@ -29,9 +23,9 @@
 | Property         | Details                                      |
 |------------------|----------------------------------------------|
 | **Difficulty**   | 🟡 Medium                                    |
-| **Topic Tags**   | `Array`, `Matrix`, `Simulation`                                       |                                      |
-| **Solved On**    | April 26, 2026                                   |
-| **Attempts**     | 2                                           |
+| **Topic Tags**   | `Array`, `Dynamic Programming`                                       |                                      |
+| **Solved On**    | May 5, 2026                                   |
+| **Attempts**     | 3                                           |
 
 ---
 
@@ -39,14 +33,14 @@
 
 ### Example 1
 ```
-Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-Output: [1,2,3,6,9,8,7,4,5]
+Input: numRows = 5
+Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
 ```
 
 ### Example 2
 ```
-Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+Input: numRows = 1
+Output: [[1]]
 ```
 ---
 ## 💻 Solution Code
@@ -54,34 +48,23 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 ### Java
 ```java
 class Solution {
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> list = new ArrayList<>();
-        int top = 0;
-        int bottom = matrix.length - 1;
-        int left = 0;
-        int right = matrix[0].length - 1;
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ans = new ArrayList<>();
+        for (int i = 1; i <= numRows; i++) {
+            ans.add(rowGenerate(i));
+        }
+        return ans;
 
-        while (top <= bottom && left <= right){
-            for (int i = left; i <= right; i++) {
-                list.add(matrix[top][i]);
-            }
-            top++;
-            for (int i = top; i <= bottom; i++) {
-                list.add(matrix[i][right]);
-            }
-            right--;
-            if (top <= bottom){
-                for (int i = right; i >= left; i--) {
-                    list.add(matrix[bottom][i]);
-                }
-            }
-            bottom--;
-            if (left <= right){
-                for (int i = bottom; i >= top; i--) {
-                    list.add(matrix[i][left]);
-                }
-            }
-            left++;
+    }
+
+    private static List<Integer> rowGenerate(int n){
+        List<Integer> list = new ArrayList<>();
+        int ans = 1;
+        list.add(ans);
+        for (int i = 1; i < n; i++) {
+            ans = ans * (n - i);
+            ans =  ans / i;
+            list.add(ans);
         }
         return list;
     }
@@ -94,7 +77,7 @@ class Solution {
 | Metric | Optimal |
 |--------|-------------|
 | **Time** | O(n²) |
-| **Space** | O(1) |
+| **Space** | O(n) |
 
 ---
 
@@ -102,19 +85,19 @@ class Solution {
 
 > patterns or tricks to remember.
 
-- Top left bottom concept. Prefer notes
+- Use the the formula for ans =  (ans * (col - row))/col
 
 ---
 
 ## 🔖 References
 
-- 🔗 [Problem Link](https://leetcode.com/problems/spiral-matrix/)
-- 🎥 [Video Explanation](https://www.youtube.com/watch?v=3Zv-s9UUrFM&feature=youtu.be)
+- 🔗 [Problem Link](https://leetcode.com/problems/pascals-triangle/description/)
+- 🎥 [Video Explanation](https://www.youtube.com/watch?v=bR7mQgwQ_o8)
 
 ---
 
 <div align="center">
 
-**Difficulty** — 🟡 Medium &nbsp;·&nbsp; **Topic** — Array, Matrix, Simulation &nbsp;·&nbsp; **Status** — ✅ Solved
+**Difficulty** — 🟡 Medium &nbsp;·&nbsp; **Topic** — Array, Dynamic Programming &nbsp;·&nbsp; **Status** — ✅ Solved
 
 </div>
