@@ -1,4 +1,4 @@
-# 🧩 54. Spiral Matrix
+# 🧩 229. Majority Element II
 
 > **Platform:** LeetCode
 
@@ -6,20 +6,15 @@
 
 ## 📋 Problem Statement
 
-> Given an m x n matrix, return all elements of the matrix in spiral order.
->
-> _Example: `Input`: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-`Output`: [1,2,3,6,9,8,7,4,5]
+> Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
 
 ---
 
 ## 📌 Constraints
 
 ```
-• m == matrix.length
-• n == matrix[i].length
-• 1 <= m, n <= 10
-• -100 <= matrix[i][j] <= 100
+• 1 <= nums.length <= 5 * 10⁴
+• -10⁹ <= nums[i] <= 10⁹
 ```
 
 ---
@@ -29,9 +24,9 @@
 | Property         | Details                                      |
 |------------------|----------------------------------------------|
 | **Difficulty**   | 🟡 Medium                                    |
-| **Topic Tags**   | `Array`, `Matrix`, `Simulation`                                       |                                      |
-| **Solved On**    | April 26, 2026                                   |
-| **Attempts**     | 2                                           |
+| **Topic Tags**   | `Array`, `Hash Table`, `Sorting`, `Counting`                                       |                                      |
+| **Solved On**    | May 5, 2026                                   |
+| **Attempts**     | 1                                           |
 
 ---
 
@@ -39,14 +34,20 @@
 
 ### Example 1
 ```
-Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
-Output: [1,2,3,6,9,8,7,4,5]
+Input: nums = [3,2,3]
+Output: [3]
 ```
 
 ### Example 2
 ```
-Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
-Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+Input: nums = [1]
+Output: [1]
+```
+
+### Example 3
+```
+Input: nums = [1,2]
+Output: [1,2]
 ```
 ---
 ## 💻 Solution Code
@@ -54,36 +55,24 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 ### Java
 ```java
 class Solution {
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> list = new ArrayList<>();
-        int top = 0;
-        int bottom = matrix.length - 1;
-        int left = 0;
-        int right = matrix[0].length - 1;
+    public List<Integer> majorityElement(int[] nums) {
+        HashMap<Integer, Integer> hash = new HashMap<>();
+        List<Integer> ans = new ArrayList<>();
 
-        while (top <= bottom && left <= right){
-            for (int i = left; i <= right; i++) {
-                list.add(matrix[top][i]);
+        for (int i = 0; i < nums.length; i++) {
+            if (hash.containsKey(nums[i])){
+                hash.put(nums[i], hash.get(nums[i]) + 1);
+            } else {
+                hash.put(nums[i], 1);
             }
-            top++;
-            for (int i = top; i <= bottom; i++) {
-                list.add(matrix[i][right]);
-            }
-            right--;
-            if (top <= bottom){
-                for (int i = right; i >= left; i--) {
-                    list.add(matrix[bottom][i]);
-                }
-            }
-            bottom--;
-            if (left <= right){
-                for (int i = bottom; i >= top; i--) {
-                    list.add(matrix[i][left]);
-                }
-            }
-            left++;
         }
-        return list;
+
+        for (int i : hash.keySet()){
+            if (hash.get(i) > nums.length/3){
+                ans.add(i);
+            }
+        }
+        return ans;
     }
 }
 ```
@@ -93,7 +82,7 @@ class Solution {
 
 | Metric | Optimal |
 |--------|-------------|
-| **Time** | O(n²) |
+| **Time** | O(n) |
 | **Space** | O(1) |
 
 ---
@@ -102,19 +91,19 @@ class Solution {
 
 > patterns or tricks to remember.
 
-- Top left bottom concept. Prefer notes
+- Use HashMap
 
 ---
 
 ## 🔖 References
 
-- 🔗 [Problem Link](https://leetcode.com/problems/spiral-matrix/)
-- 🎥 [Video Explanation](https://www.youtube.com/watch?v=3Zv-s9UUrFM&feature=youtu.be)
+- 🔗 [Problem Link](https://leetcode.com/problems/majority-element-ii/)
+- 🎥 [Video Explanation](https://www.youtube.com/watch?v=vwZj1K0e9U8&feature=youtu.be)
 
 ---
 
 <div align="center">
 
-**Difficulty** — 🟡 Medium &nbsp;·&nbsp; **Topic** — Array, Matrix, Simulation &nbsp;·&nbsp; **Status** — ✅ Solved
+**Difficulty** — 🟡 Medium &nbsp;·&nbsp; **Topic** — Array, Hash Table, Sorting, Counting &nbsp;·&nbsp; **Status** — ✅ Solved
 
 </div>
