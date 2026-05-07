@@ -1,15 +1,21 @@
 class Solution {
-    public int reverse(int x) {
-        int num = 0;
-        if (num>Integer.MAX_VALUE/10 || num<Integer.MIN_VALUE/10){
-            return 0;
-        }
-        while (x!=0){
-            int r = x % 10;
-            x = x / 10;
-            num = (num * 10) + r;
+    public List<Integer> majorityElement(int[] nums) {
+        HashMap<Integer, Integer> hash = new HashMap<>();
+        List<Integer> ans = new ArrayList<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (hash.containsKey(nums[i])){
+                hash.put(nums[i], hash.get(nums[i]) + 1);
+            } else {
+                hash.put(nums[i], 1);
+            }
         }
 
-        return num;
+        for (int i : hash.keySet()){
+            if (hash.get(i) > nums.length/3){
+                ans.add(i);
+            }
+        }
+        return ans;
     }
 }
