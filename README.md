@@ -47,9 +47,9 @@ This repository is my **personal, structured DSA practice log**. Every problem h
 | Difficulty | Solved | Target | 
 |------------|--------|--------|
 | 🟢 Easy    | 23      | 150    |
-| 🟡 Medium  | 17      | 150    | 
+| 🟡 Medium  | 18      | 150    | 
 | 🔴 Hard    | 0      | 50     |
-| **Total**  | **40**  | **350**|
+| **Total**  | **41**  | **350**|
 
 ---
 
@@ -102,6 +102,7 @@ DSA-Mastery/
 | 189 | [Rotate Array] | 🟡 Medium | Two Pointers | ✅ |
 | 118 | [Pascals Traingle] | 🟡 Medium | Dynamic Programming | ✅ |
 | 229 | [Majority Element II] | 🟡 Medium | Hash Table | ✅ |
+| 015 | [3 Sum | 🟡 Medium | Two Pointers | ✅ |
 
 ---
 
