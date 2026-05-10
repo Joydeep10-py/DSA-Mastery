@@ -46,10 +46,10 @@ This repository is my **personal, structured DSA practice log**. Every problem h
 
 | Difficulty | Solved | Target | 
 |------------|--------|--------|
-| 🟢 Easy    | 24      | 150    |
-| 🟡 Medium  | 18      | 150    | 
+| 🟢 Easy    | 23      | 150    |
+| 🟡 Medium  | 20      | 150    | 
 | 🔴 Hard    | 0      | 50     |
-| **Total**  | **42**  | **350**|
+| **Total**  | **43**  | **350**|
 
 ---
 
@@ -131,6 +131,7 @@ DSA-Mastery/
 | 153 | [Find Minimum in Rotated Sorted Array] | 🟡 Medium | Binary Search | ✅ |
 | 540 | [Single Element in a Sorted Array] | 🟡 Medium | Binary Search | ✅ |
 | 162 | [Find Peak Element] | 🟡 Medium | Binary Search | ✅ |
+| 875 | [Koko Eating Bananas] | 🟡 Medium | Binary Search | ✅ |
 ---
 
 ## 🔑 Core Concepts Cheat Sheet
