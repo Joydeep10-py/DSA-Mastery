@@ -47,9 +47,9 @@ This repository is my **personal, structured DSA practice log**. Every problem h
 | Difficulty | Solved | Target | 
 |------------|--------|--------|
 | 🟢 Easy    | 23      | 150    |
-| 🟡 Medium  | 20      | 150    | 
+| 🟡 Medium  | 21      | 150    | 
 | 🔴 Hard    | 0      | 50     |
-| **Total**  | **43**  | **350**|
+| **Total**  | **44**  | **350**|
 
 ---
 
@@ -132,6 +132,7 @@ DSA-Mastery/
 | 540 | [Single Element in a Sorted Array] | 🟡 Medium | Binary Search | ✅ |
 | 162 | [Find Peak Element] | 🟡 Medium | Binary Search | ✅ |
 | 875 | [Koko Eating Bananas] | 🟡 Medium | Binary Search | ✅ |
+| 1283 | [Find the smallest divisior in the Threshold] | 🟡 Medium | Binary Search | ✅ |
 ---
 
 ## 🔑 Core Concepts Cheat Sheet
