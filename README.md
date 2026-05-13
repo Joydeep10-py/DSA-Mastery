@@ -47,9 +47,9 @@ This repository is my **personal, structured DSA practice log**. Every problem h
 | Difficulty | Solved | Target | 
 |------------|--------|--------|
 | 🟢 Easy    | 23      | 150    |
-| 🟡 Medium  | 22      | 150    | 
+| 🟡 Medium  | 24      | 150    | 
 | 🔴 Hard    | 0      | 50     |
-| **Total**  | **45**  | **350**|
+| **Total**  | **47**  | **350**|
 
 ---
 
