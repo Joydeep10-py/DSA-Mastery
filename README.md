@@ -133,6 +133,8 @@ DSA-Mastery/
 | 162 | [Find Peak Element] | 🟡 Medium | Binary Search | ✅ |
 | 875 | [Koko Eating Bananas] | 🟡 Medium | Binary Search | ✅ |
 | 1283 | [Find the smallest divisior in the Threshold] | 🟡 Medium | Binary Search | ✅ |
+| 1482 | [Minimum Number of Days to Make m Bouquets] | 🟡 Medium | Binary Search | ✅ |
+
 ---
 
 ## 🔑 Core Concepts Cheat Sheet
