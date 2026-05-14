@@ -1,4 +1,4 @@
-# 🧩 1283. Find the Smallest Divisor given a Threshold
+# 🧩 1283. Minimum Number of Days to Make m Bouquets
 
 > **Platform:** LeetCode
 
@@ -6,18 +6,21 @@
 
 ## 📋 Problem Statement
 
-> Given an array of integers nums and an integer threshold, we will choose a positive integer divisor, divide all the array by it, and sum the division's result. Find the smallest divisor such that the result mentioned above is less than or equal to threshold.
-Each result of the division is rounded to the nearest integer greater than or equal to that element. (For example: 7/3 = 3 and 10/2 = 5).
-The test cases are generated so that there will be an answer.
+> You are given an integer array bloomDay, an integer m and an integer k.
+You want to make m bouquets. To make a bouquet, you need to use k adjacent flowers from the garden.
+The garden consists of n flowers, the ith flower will bloom in the bloomDay[i] and then can be used in exactly one bouquet.
+Return the minimum number of days you need to wait to be able to make m bouquets from the garden. If it is impossible to make m bouquets return -1.
 
 ---
 
 ## 📌 Constraints
 
 ```
-• 1 <= nums.length <= 5 * 10⁴
-• 1 <= nums[i] <= 10⁶
-• nums.length <= threshold <= 10⁶
+• bloomDay.length == n
+• 1 <= n <= 10⁵
+• 1 <= bloomDay[i] <= 10⁹
+• 1 <= m <= 10⁶
+• 1 <= k <= n
 ```
 
 ---
@@ -28,7 +31,7 @@ The test cases are generated so that there will be an answer.
 |------------------|----------------------------------------------|
 | **Difficulty**   | 🟡 Medium                                    |
 | **Topic Tags**   | `Array`, `Binary Search`, `Staff`                                      |                                      |
-| **Solved On**    | May 10, 2026                                   |
+| **Solved On**    | May 11, 2026                                   |
 | **Attempts**     | 2                                           |
 
 ---
@@ -37,16 +40,32 @@ The test cases are generated so that there will be an answer.
 
 ### Example 1
 ```
-Input: nums = [1,2,5,9], threshold = 6
-Output: 5
-Explanation: We can get a sum to 17 (1+2+5+9) if the divisor is 1. 
-If the divisor is 4 we can get a sum of 7 (1+1+2+3) and if the divisor is 5 the sum will be 5 (1+1+1+2). 
+Input: bloomDay = [1,10,3,10,2], m = 3, k = 1
+Output: 3
+Explanation: Let us see what happened in the first three days. x means flower bloomed and _ means flower did not bloom in the garden.
+We need 3 bouquets each should contain 1 flower.
+After day 1: [x, _, _, _, _]   // we can only make one bouquet.
+After day 2: [x, _, _, _, x]   // we can only make two bouquets.
+After day 3: [x, _, x, _, x]   // we can make 3 bouquets. The answer is 3.
 ```
 
 ### Example 2
 ```
-Input: nums = [44,22,33,11,1], threshold = 5
-Output: 44
+Input: bloomDay = [1,10,3,10,2], m = 3, k = 2
+Output: -1
+Explanation: We need 3 bouquets each has 2 flowers, that means we need 6 flowers. We only have 5 flowers so it is impossible to get the needed bouquets and we return -1.
+```
+
+### Example 3
+```
+Input: bloomDay = [7,7,7,7,12,7,7], m = 2, k = 3
+Output: 12
+Explanation: We need 2 bouquets each should have 3 flowers.
+Here is the garden after the 7 and 12 days:
+After day 7: [x, x, x, x, _, x, x]
+We can make one bouquet of the first three flowers that bloomed. We cannot make another bouquet from the last three flowers that bloomed because they are not adjacent.
+After day 12: [x, x, x, x, x, x, x]
+It is obvious that we can make two bouquets in different ways.
 ```
 ---
 ## 💻 Solution Code
@@ -54,16 +73,20 @@ Output: 44
 ### Java
 ```java
 class Solution {
-    public int smallestDivisor(int[] nums, int threshold) {
-        int low = 1;
-        int high = highestInArray(nums);
-        int ans = high;
+    public int minDays(int[] bloomDay, int m, int k) {
+        long num = (long) m * k;
+        if (num > bloomDay.length){
+            return -1;
+        }
 
-        while (low < high){
+        int low = 1;
+        int high = highestInArray(bloomDay);
+
+        while (low <= high){
             int mid = low + (high - low)/2;
-            int s = sumDiv(nums, mid);
-            if (s <= threshold){
-                high = mid;
+            int bou = bouquets(bloomDay, k, mid);
+            if (bou >= m){
+               high = mid - 1;
             } else {
                 low = mid + 1;
             }
@@ -71,12 +94,19 @@ class Solution {
         return low;
     }
 
-    private static int sumDiv(int[] arr, int num){
-        int sum = 0;
+    private static int bouquets(int[] arr, int k, int num){
+        int c = 0;
+        int n = 0;
         for (int i = 0; i < arr.length; i++) {
-            sum += (int) Math.ceil((double) arr[i] / num);
+            if (arr[i] <= num){
+                c++;
+            } else {
+                n += c/k;
+                c = 0;
+            }
         }
-        return sum;
+        n += c/k;
+        return n;
     }
 
     private static int highestInArray(int[] piles){
@@ -110,7 +140,8 @@ class Solution {
 
 ## 🔖 References
 
-- 🔗 [Problem Link](https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/)
+- 🔗 [Problem Link](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/)
+- 🎥 [Video Explanation](https://www.youtube.com/watch?v=TXAuxeYBTdg)
 
 ---
 
